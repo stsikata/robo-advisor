@@ -26,11 +26,28 @@ tsd = parsed_response["Time Series (Daily)"]
 dates = list(tsd.keys())
 
 latest_day = dates[0]
+# latest_days = dates[0:20]
 
 last_close = parsed_response["Time Series (Daily)"][latest_day]["4. close"]
 
-#symbol = input("Please enter a ticker symbol:")
 
+high_prices = []
+low_prices = []
+
+for date in dates:
+    high_price = tsd[date]["2. high"]
+    high_prices.append(float(high_price))
+    low_price = tsd[date]["3. low"]
+    low_prices.append(float(low_price))
+
+recent_high = max(high_prices)
+recent_low = min(low_prices)
+
+
+# recent_low = parsed_response["Time Series (Daily)"][latest_day]["3. low"]
+
+#symbol = input("Please enter a ticker symbol:")
+# print("HIGH PRICES", high_prices)
 
 
  
@@ -42,8 +59,8 @@ print("REQUEST AT: 2018-02-20 02:00pm")
 print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
 print(f"LATEST CLOSE: {to_usd(float(last_close))}")
-print("RECENT HIGH: $101,000.00")
-print("RECENT LOW: $99,000.00")
+print(f"RECENT HIGH: {to_usd(float(recent_high))}")
+print(f"RECENT LOW: {to_usd(float(recent_low))}")
 print("-------------------------")
 print("RECOMMENDATION: BUY!")
 print("RECOMMENDATION REASON: TODO")
