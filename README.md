@@ -7,9 +7,9 @@ Clone this repo: https://github.com/stsikata/robo-advisor.git
 
 Navigate to the repo from the command-line
 
-'''sh
+```sh
 cd ~/robo-advisor
-'''
+```
 
 ### Environment Setup
 
@@ -30,4 +30,11 @@ Run the python script from the command-line:
 
 ```sh
 python app/robo_advisor.py
+```
+
+
+Add your AlphaVantage key to a new file called ".env"
+```
+# this is the ".env" file
+ALPHAVANTAGE_API_KEY="abc123"
 ```
