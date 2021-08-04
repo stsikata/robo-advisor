@@ -20,11 +20,17 @@ response = requests.get(request_url)
 parsed_response = json.loads(response.text) # to parse the response string into a dictionary
 
 last_refreshed = parsed_response["Meta Data"]["3. Last Refreshed"]
-last_close = parsed_response["Time Series (Daily)"]["2021-08-03"]["4. close"]
+
+tsd = parsed_response["Time Series (Daily)"]
+
+dates = list(tsd.keys())
+
+latest_day = dates[0]
+
+last_close = parsed_response["Time Series (Daily)"][latest_day]["4. close"]
 
 #symbol = input("Please enter a ticker symbol:")
 
-#breakpoint()
 
 
  
